@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController _controller;
     [SerializeField] private Animator _animator;
     private Transform _transform;
+    [SerializeField] private GameManager _gameManager;
 
     private void Awake() {
         _controller = GetComponent<CharacterController>();    
@@ -15,6 +16,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update() {
+
+        if (_gameManager.GameOver) return;
+
         _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
         _controller.Move(_moveDirection * _speed / 10 * Time.deltaTime);
 
@@ -25,7 +29,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Throw Food");
             _animator.SetTrigger("throw");
 
-            GameObject.Instantiate(_foodObject, _transform.position, Quaternion.identity);
+            GameObject food = GameObject.Instantiate(_foodObject, _transform.position, Quaternion.identity);
+            food.GetComponent<FoodController>().Move();
         }
     }
 }
