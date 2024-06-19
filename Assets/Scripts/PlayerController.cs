@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator _animator;
     private Transform _transform;
     [SerializeField] private GameManager _gameManager;
+    [SerializeField] private AudioSource _sfxThrowFood;
 
     private void Awake() {
         _controller = GetComponent<CharacterController>();    
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
             Debug.Log("Throw Food");
+            _sfxThrowFood.Play();
             _animator.SetTrigger("throw");
 
             GameObject food = GameObject.Instantiate(_foodObject, _transform.position, Quaternion.identity);

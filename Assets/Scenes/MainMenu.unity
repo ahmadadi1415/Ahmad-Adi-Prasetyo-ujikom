@@ -809,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fde24d415236d8740a06732c67cdc42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sfxController: {fileID: 0}
+  _sfxController: {fileID: 2001895530}
 --- !u!1 &1804183103
 GameObject:
   m_ObjectHideFlags: 0
