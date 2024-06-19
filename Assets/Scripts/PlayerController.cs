@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
             _animator.SetTrigger("throw");
 
             GameObject food = GameObject.Instantiate(_foodObject, _transform.position, Quaternion.identity);
-            food.GetComponent<FoodController>().Move();
         }
     }
 }
