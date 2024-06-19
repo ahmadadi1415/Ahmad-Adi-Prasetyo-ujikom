@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
         if (_gameManager.GameOver) return;
 
+        PausePressed();
+
         _moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
         _controller.Move(_moveDirection * _speed / 10 * Time.deltaTime);
 
@@ -31,6 +33,14 @@ public class PlayerController : MonoBehaviour
 
             GameObject food = GameObject.Instantiate(_foodObject, _transform.position, Quaternion.identity);
             food.GetComponent<FoodController>().Move();
+        }
+    }
+
+    private void PausePressed()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _gameManager.PauseGame();
         }
     }
 }
