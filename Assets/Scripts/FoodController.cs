@@ -3,7 +3,8 @@ using UnityEngine;
 public class FoodController : MonoBehaviour
 {
     [SerializeField] private float _lifetime = 3;
-    [SerializeField] private float __speed = 300;
+    [SerializeField] private float _speed = 300;
+    public int _hungerValue = 25;
     [SerializeField] private Vector3 _targetPosition;
     private Rigidbody _rigidbody;
     private float currentTimer = 3;
@@ -34,7 +35,7 @@ public class FoodController : MonoBehaviour
 
     public void Move()
     {
-        var step = __speed / 10 * Time.deltaTime;
+        var step = _speed / 10 * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, step);
     }
 }

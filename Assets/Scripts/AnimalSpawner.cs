@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AnimalSpawner : MonoBehaviour
 {
-    [SerializeField] private Vector3 _startPosition = new Vector3(-40, 0, 50);
-    [SerializeField] private Vector3 _endPosition = new Vector3(40, 0, 50);
+    [SerializeField] private Vector3 _startPosition = new Vector3(-5, 0, 50);
+    [SerializeField] private Vector3 _endPosition = new Vector3(5, 0, 50);
     [SerializeField] private Vector3 _targetPosition;
     [SerializeField] private float _speed = 10;
     [SerializeField] private float _spawnInterval = 2;
