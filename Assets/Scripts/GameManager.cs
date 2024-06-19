@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _gameTime = 60;
     private float _currentTimer = 60;
     public bool GameOver = false;
+    public bool GamePaused = false;
+
     [SerializeField] private GameObject _pauseView;
     [SerializeField] private AudioManager _audioManager;
 
@@ -24,6 +26,7 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        GamePaused = true;
         _audioManager._sfxController.PlayButtonClicked();
         Time.timeScale = 0f;
         _pauseView.SetActive(true);
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        GamePaused = false;
         _audioManager._sfxController.PlayButtonClicked();
         Time.timeScale = 1f;
         _pauseView.SetActive(false);
@@ -38,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public void OnMainMenuClicked()
     {
+        GamePaused = false;
         _audioManager._sfxController.PlayButtonClicked();
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
