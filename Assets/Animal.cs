@@ -8,6 +8,7 @@ public class Animal : MonoBehaviour
     [SerializeField] private int _currentHunger;
     [SerializeField] private string animation;
     [SerializeField] private Vector3 _targetPosition;
+    [SerializeField] private GameManager _gameManager;
 
     private void Start()
     {
@@ -35,14 +36,18 @@ public class Animal : MonoBehaviour
         if (other.gameObject.CompareTag("Food"))
         {
             Debug.Log("FOOOOD");
-            _currentHunger += other.gameObject.GetComponent<FoodController>()._hungerValue;
+            FoodController food = other.gameObject.GetComponent<FoodController>();
+            _currentHunger += food._hungerValue;
 
             if (_currentHunger >= _hungerNeed)
             {
+                _gameManager.AddScore(_score);
                 Destroy(gameObject);
             }
 
             Destroy(other.gameObject);
         }
+
+        Debug.Log("Trigger");
     }
 }

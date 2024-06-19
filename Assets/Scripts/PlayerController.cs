@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Throw Food");
+            // Debug.Log("Throw Food");
             _sfxThrowFood.Play();
             _animator.SetTrigger("throw");
 
