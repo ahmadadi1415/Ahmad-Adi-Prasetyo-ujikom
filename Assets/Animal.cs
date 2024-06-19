@@ -7,6 +7,7 @@ public class Animal : MonoBehaviour
     [SerializeField] private int _hungerNeed, _score, _speed;
     [SerializeField] private int _currentHunger;
     [SerializeField] private string animation;
+    [SerializeField] private GameObject particle;
     [SerializeField] private Vector3 _targetPosition;
     [SerializeField] private GameManager _gameManager;
 
@@ -42,7 +43,8 @@ public class Animal : MonoBehaviour
             if (_currentHunger >= _hungerNeed)
             {
                 _gameManager.AddScore(_score);
-                Destroy(gameObject);
+                particle.SetActive(true);
+                Destroy(gameObject, 0.5f);
             }
 
             Destroy(other.gameObject);

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class AnimalSpawner : MonoBehaviour
 {
-    [SerializeField] private Vector3 _startPosition = new Vector3(-5, 0, 50);
-    [SerializeField] private Vector3 _endPosition = new Vector3(5, 0, 50);
+    [SerializeField] private Vector3 _startPosition = new Vector3(-5, -1, 50);
+    [SerializeField] private Vector3 _endPosition = new Vector3(5, -1, 50);
     [SerializeField] private Vector3 _targetPosition;
     [SerializeField] private float _speed = 10;
     [SerializeField] private float _spawnInterval = 2;
     [SerializeField] private GameObject[] animals;
+    [SerializeField] private GameManager _gameManager;
     private float _currentTimer = 2;
 
     private void Start()
@@ -20,6 +21,7 @@ public class AnimalSpawner : MonoBehaviour
 
     private void Update()
     {
+        if (_gameManager.GameOver) return;
         Move();
         Spawn();
     }

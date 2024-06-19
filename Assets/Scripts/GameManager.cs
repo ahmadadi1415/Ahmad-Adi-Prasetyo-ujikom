@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public bool GameOver = false;
     public bool GamePaused = false;
 
-    [SerializeField] private GameObject _pauseView;
+    [SerializeField] private GameObject _pauseView, _gameOverView;
     [SerializeField] private TextMeshProUGUI _scoreText, _timerText;
     [SerializeField] private AudioManager _audioManager;
 
@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     {
         _timerText.text = $"Timer: {(int)_currentTimer}";
         _scoreText.text = $"Score: {_score}";
+        _gameOverView.SetActive(GameOver);
+        
         if (_currentTimer > 0.01f)
         {
             GameOver = false;
