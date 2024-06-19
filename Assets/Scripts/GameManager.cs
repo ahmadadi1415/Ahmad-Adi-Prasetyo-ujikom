@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private float _gameTime = 60;
-    private float _currentTimer = 60;
+    [SerializeField] private float _currentTimer = 60;
     private int _score = 0;
     public bool GameOver = false;
     public bool GamePaused = false;
 
     [SerializeField] private GameObject _pauseView, _gameOverView;
     [SerializeField] private TextMeshProUGUI _scoreText, _timerText;
+    [SerializeField] private Camera _gameOverCam, _mainCam;
     [SerializeField] private AudioManager _audioManager;
 
     private void Update()
@@ -19,7 +20,10 @@ public class GameManager : MonoBehaviour
         _timerText.text = $"Timer: {(int)_currentTimer}";
         _scoreText.text = $"Score: {_score}";
         _gameOverView.SetActive(GameOver);
-        
+
+        _mainCam.enabled = !GameOver;
+        _gameOverCam.enabled = GameOver;
+
         if (_currentTimer > 0.01f)
         {
             GameOver = false;
